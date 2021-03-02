@@ -12,7 +12,10 @@ clean:
 	rm -f *.zip theater_organizer 
 
 dist: theater_organizer
-	zip movie_theater_seating_challenge-Ty_Koslowski.zip theater_organizer.py functions.py run.sh tests.sh Makefile README
+	zip -r movie_theater_seating_challenge-Ty_Koslowski.zip \
+	theater_organizer.py functions.py run.sh tests.sh tests \
+	Makefile README
 
 tests: dist
 	./tests.sh
+	rm -f *.zip theater_organizer result.txt

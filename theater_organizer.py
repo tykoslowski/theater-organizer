@@ -21,12 +21,19 @@ def main():
         sys.exit(1)
     
     # Gather data from file
+    data_file = open(sys.argv[1], "r")
+    lines = data_file.readlines()
 
+    # Create an output file
+    output_file = open("result.txt", "w")
 
     # Create theater grid
     theater = [[0] * SEATS] * ROWS
-    for row in theater:
-        print(row)
+
+
+
+    # Return path to output file
+    return os.path.abspath(output_file.name)
 
 # Main function call
 if __name__ == "__main__":

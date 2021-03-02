@@ -7,3 +7,27 @@ Seating Challenge 2020 given to me by Walmart.
 
 I first made sure I had "make" and "zip" installed in my Linux distribution. I 
 am using Windows, so I'm running on WSL with Ubuntu.
+
+To create a command-line executable for this solution, run "make" inside the 
+directory in which it was unzipped. This should create a file called 
+"theater_organizer" which can be executed using:
+
+./theater_organizer [FILENAME]
+
+where "FILENAME" is the name of the input file to be used to determine 
+reservations.
+
+To run the tests for the solution, use "make tests". This will create a 
+distributable .zip file, unzip its contents to a temporary directory, and run 
+tests on its contents. Then, it will delete the temporary directory as well as 
+the .zip file.
+
+For this solution, I assumed that the output file was to be a .txt file. I 
+wrote the solution so that the output is put into a newly-created file called 
+"result.txt". If the file already exists, then it is overwritten.
+
+The tests I ran on my solution were...
+
+I am extremely grateful to be considered as a Software Engineer Intern for 
+Walmart and I appreciate the time taken to interview me and to examine this 
+solution. Thank you and I hope to hear from you soon.

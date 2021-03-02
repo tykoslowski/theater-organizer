@@ -352,3 +352,4 @@ MigrationBackup/
 # Project-specific ignores
 movie_theater_seating_challenge-Ty_Koslowski.zip
 theater_organizer
+result.txt
