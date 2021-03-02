@@ -80,6 +80,8 @@ The tests I ran on my solution were as follows:
       is at full-capacity, parties of 1 even will not have their reservation 
       fulfilled
 
+These tests can be run using "make tests".
+
 I am extremely grateful to be considered as a Software Engineering Intern for 
 Walmart and I appreciate the time taken to interview me and to examine this 
 solution. Thank you and I hope to hear from you soon.
