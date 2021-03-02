@@ -24,10 +24,21 @@ the .zip file.
 
 For this solution, I assumed that the output file was to be a .txt file. I 
 wrote the solution so that the output is put into a newly-created file called 
-"result.txt". If the file already exists, then it is overwritten.
+"result.txt". If the file already exists, then it is overwritten. 
+
+I also assumed the theater starts empty. If the theater were to not start 
+empty, we would need a way of telling the solution which seats are already 
+taken.
+
+The next assumption I made was that of order of importance. I decided to opt 
+for a "first come, first serve" approach, where reservations are fulfilled in 
+the order in which they are provided. While examining all reservations and 
+maximizing the used seats would create a larger number of satisfied customers, 
+it would also create a lot of angry customers that filled their reservation 
+early and still did not get a seat.
 
 The tests I ran on my solution were...
 
-I am extremely grateful to be considered as a Software Engineer Intern for 
+I am extremely grateful to be considered as a Software Engineering Intern for 
 Walmart and I appreciate the time taken to interview me and to examine this 
 solution. Thank you and I hope to hear from you soon.
