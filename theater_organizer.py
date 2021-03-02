@@ -7,8 +7,6 @@ import os
 from os import path
 from functions import *
 
-ROWS = 10
-SEATS = 20
 SEPARATOR = " "
 
 # Main function
@@ -28,8 +26,8 @@ def main():
     reservations = []
     for line in lines: # Grab reservation from each line
         reservations.append(line.split(SEPARATOR))
-    for res in reservations: # Get rid of unnecessary chars and convert to ints
-        res[0] = int(res[0][1:])
+    for res in reservations: # Get rid of unnecessary chars and convert to int
+        # res[0] = int(res[0][1:])
         res[1] = int(res[1].rstrip("\n"))
 
     # Create an output file
@@ -43,10 +41,12 @@ def main():
     # unfulfilled if it is not possible
     for res in reservations:
         output_str = find_and_fill(res[1], theater)
-        if output_str is not None:
-            output_file.write("R" + str(res[0]).zfill(3) + " " + output_string + "\n")
+        if output_str == "":
+            output_file.write(res[0] + " " + "Empty string\n")
+        elif output_str is not None:
+            output_file.write(res[0] + " " + output_str + "\n")
         else:
-            output_file.write("R" + str(res[0]).zfill(3) + " Unfulfilled\n")
+            output_file.write(res[0] + " Unfulfilled\n")
 
     # Return path to output file
     return os.path.abspath(output_file.name)

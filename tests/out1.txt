@@ -1,4 +1,4 @@
-R001 Unfulfilled
-R002 Unfulfilled
-R003 Unfulfilled
-R004 Unfulfilled
+R001 J1,J2
+R002 J17,J18,J19,J20
+R003 H1,H2,H3,H4
+R004 H18,H19,H20

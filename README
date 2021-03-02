@@ -54,7 +54,16 @@ We can check each edge of every other row rather than every row because if a
 row is occupied at the edge, then the space in the rows adjacent are going to 
 be buffer seats.
 
-The tests I ran on my solution were...
+I finally assumed that with no edges open, we should move to a greedy 
+algorithm, as only the middle portions of the theater are open, and we would 
+find no benefit to sticking to a certain area any longer.
+
+The tests I ran on my solution were as follows:
+  1 - General simple case test, are reservations being fulfilled from the back 
+      to the front, are edges being filled first
+  2 - What happens when all edges are filled? We should move to middle 
+      portions and use greedy algorithm, checks that buffers overlap and that 
+      buffers are being maintained
 
 I am extremely grateful to be considered as a Software Engineering Intern for 
 Walmart and I appreciate the time taken to interview me and to examine this 
