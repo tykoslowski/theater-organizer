@@ -10,6 +10,8 @@ BUFFER = 2
 
 ROWS = 10
 SEATS = 20
+ROW_BUFFER = 1
+SEAT_BUFFER = 3
 
 # Used for printing to stderr easily
 def eprint(*args, **kwargs):
@@ -36,7 +38,7 @@ def find(seats_req, theater_occ):
                 ret_list.append((row_index, seat_index))
                 seat_index += 1
             return ret_list
-        row_index -= 2
+        row_index -= ROW_BUFFER + 1
     
     # If no edges open, move to greedy algorithm
     row_index = ROWS - 1 # Start at back of theater again
@@ -47,20 +49,30 @@ def find(seats_req, theater_occ):
             continue_flag = False
             
             if theater_occ[row_index][seat_index:(seat_index + seats_req)] == [EMPTY] * seats_req:
-                # Check above if not at row 0
-                if row_index != 0:
+                # Check above if not out of bounds
+                if row_index - ROW_BUFFER >= 0:
                     for i in range(seat_index, seat_index + seats_req):
-                        if theater_occ[row_index - 1][i] == OCCUPIED:
-                            continue_flag = True
+                        break_flag = False
+                        for j in range(1, ROW_BUFFER + 1):
+                            if theater_occ[row_index - j][i] == OCCUPIED:
+                                continue_flag = True
+                                break_flag = True
+                                break
+                        if break_flag is True:
                             break
                     if continue_flag is True:
                         seat_index += 1
                         continue
-                # Check below if not at last row
-                if row_index != ROWS - 1:
+                # Check below if not out of bounds
+                if row_index + ROW_BUFFER <= ROWS - 1:
                     for i in range(seat_index, seat_index + seats_req):
-                        if theater_occ[row_index + 1][i] == OCCUPIED:
-                            continue_flag = True
+                        break_flag = False
+                        for j in range(1, ROW_BUFFER + 1):
+                            if theater_occ[row_index + 1][i] == OCCUPIED:
+                                continue_flag = True
+                                break_flag = True
+                                break
+                        if break_flag is True:
                             break
                     if continue_flag is True:
                         seat_index += 1
@@ -68,13 +80,13 @@ def find(seats_req, theater_occ):
                 # Check left three spaces or amount of spaces 
                 # between start of seating and left edge
                 if seat_index != 0:
-                    if seat_index < 3:
+                    if seat_index < SEAT_BUFFER:
                         for i in range(0, seat_index):
                             if theater_occ[row_index][i] == OCCUPIED:
                                 continue_flag = True
                                 break
                     else:
-                        for i in range(seat_index - 3, seat_index):
+                        for i in range(seat_index - SEAT_BUFFER, seat_index):
                             if theater_occ[row_index][i] == OCCUPIED:
                                 continue_flag = True
                                 break
@@ -84,13 +96,13 @@ def find(seats_req, theater_occ):
                 # Check right three spaces or amount of spaces
                 # between end of seating and right edge
                 if seat_index + seats_req < SEATS:
-                    if SEATS - (seat_index + seats_req) < 3:
+                    if SEATS - (seat_index + seats_req) < SEAT_BUFFER:
                         for i in range(seat_index + seats_req, SEATS):
                             if theater_occ[row_index][i] == OCCUPIED:
                                 continue_flag = True
                                 break
                     else:
-                        for i in range(seat_index + seats_req, seat_index + seats_req + 3):
+                        for i in range(seat_index + seats_req, seat_index + seats_req + SEAT_BUFFER):
                             if theater_occ[row_index][i] == OCCUPIED:
                                 continue_flag = True
                                 break
@@ -125,28 +137,30 @@ def fill(seats_to_be_filled, theater_occ):
         seat = seats_to_be_filled[i][1]
         theater_occ[row][seat] = OCCUPIED
         
-        # Buffer three to the left if this is first seat
+        # Buffer SEAT_BUFFER amount to the left if this is first seat
         if i == 0:
-            if seat < 3:
+            if seat < SEAT_BUFFER:
                 for j in range(0, seat):
                     theater_occ[row][j] = BUFFER
             else:
-                for j in range(seat - 3, seat):
+                for j in range(seat - SEAT_BUFFER, seat):
                     theater_occ[row][j] = BUFFER
-        # Buffer three to the right if this is last seat
+        # Buffer SEAT_BUFFER to the right if this is last seat
         elif i == (len(seats_to_be_filled) - 1):
-            if SEATS - (seat + 1) < 3:
+            if SEATS - (seat + 1) < SEAT_BUFFER:
                 for j in range(seat + 1, SEATS):
                     theater_occ[row][j] = BUFFER
             else:
                 for j in range(seat + 1, seat + 4):
                     theater_occ[row][j] = BUFFER
-        # Buffer above if not in first row
-        if row != 0:
-            theater_occ[row - 1][seat] = BUFFER
+        # Buffer above if not out of bounds
+        if row - ROW_BUFFER >= 0:
+            for i in range(1, ROW_BUFFER + 1):
+                theater_occ[row - i][seat] = BUFFER
         # Buffer below if not in last row
-        elif row != ROWS - 1:
-            theater_occ[row + 1][seat] = BUFFER
+        elif row + ROW_BUFFER <= ROWS - 1:
+            for i in range(1, ROW_BUFFER + 1):
+                theater_occ[row + 1][seat] = BUFFER
         # Format into substring and append to return string
         seat_str = chr(row + 65) + str(seat + 1)
         return_str += (seat_str + ",")
