@@ -36,7 +36,7 @@ def main():
     output_file = open("result.txt", "w")
 
     # Create theater grid
-    theater = [[0] * SEATS] * ROWS
+    theater = [[0 for i in range(SEATS)] for j in range(ROWS)]
 
     # For each reservation, reserve seats and mark buffer seats as occupied,
     # note the completed reservation in results.txt or note the reservation as 

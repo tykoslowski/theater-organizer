@@ -37,6 +37,23 @@ maximizing the used seats would create a larger number of satisfied customers,
 it would also create a lot of angry customers that filled their reservation 
 early and still did not get a seat.
 
+I then assumed that people wanted to be in groups. The buffer should only 
+apply between groups and groups will not want to be split up. Again, with the 
+splitting of groups, we could approach a theater at max capacity, but we might 
+get unhappy customers when four friends are sitting at the four corners of the 
+theater.
+
+Another assumption I made was that earlier reservations would prefer the back 
+of the theater (sitting in the front is horrible!) and that the theater should 
+be filled from the back forward, checking edges first (to minimize buffer 
+space and therefore maximize occupancy and reservation-fulfillment 
+capabilities).
+
+A more specific assumption came to me while programming my "find()" function. 
+We can check each edge of every other row rather than every row because if a 
+row is occupied at the edge, then the space in the rows adjacent are going to 
+be buffer seats.
+
 The tests I ran on my solution were...
 
 I am extremely grateful to be considered as a Software Engineering Intern for 

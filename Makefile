@@ -9,7 +9,7 @@ theater_organizer: theater_organizer.py run.sh clean
 	ln -T ./run.sh ./theater_organizer
 
 clean:
-	rm -f *.zip theater_organizer 
+	rm -f *.zip theater_organizer result.txt
 
 dist: theater_organizer
 	zip -r movie_theater_seating_challenge-Ty_Koslowski.zip \
@@ -18,4 +18,3 @@ dist: theater_organizer
 
 tests: dist
 	./tests.sh
-	rm -f *.zip theater_organizer result.txt
