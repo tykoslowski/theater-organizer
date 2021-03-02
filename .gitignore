@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Project-specific ignores
+movie_theater_challenge-Ty_Koslowski.zip
+theater_organizer
