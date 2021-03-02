@@ -41,8 +41,8 @@ def find(seats_req, theater_occ):
     # If no edges open, move to greedy algorithm
     row_index = ROWS - 1 # Start at back of theater again
     while row_index >= 0:
-        seat_index = 0
-        # Iterate through all seats in each row (in amounts of seats_req)
+        
+        seat_index = 0 # Iterate through all seats in each row (in amounts of seats_req)
         while seat_index + seats_req <= SEATS:
             continue_flag = False
             
@@ -54,6 +54,7 @@ def find(seats_req, theater_occ):
                             continue_flag = True
                             break
                     if continue_flag is True:
+                        seat_index += 1
                         continue
                 # Check below if not at last row
                 if row_index != ROWS - 1:
@@ -62,6 +63,7 @@ def find(seats_req, theater_occ):
                             continue_flag = True
                             break
                     if continue_flag is True:
+                        seat_index += 1
                         continue
                 # Check left three spaces or amount of spaces 
                 # between start of seating and left edge
@@ -77,6 +79,7 @@ def find(seats_req, theater_occ):
                                 continue_flag = True
                                 break
                     if continue_flag is True:
+                        seat_index += 1
                         continue
                 # Check right three spaces or amount of spaces
                 # between end of seating and right edge
@@ -92,6 +95,7 @@ def find(seats_req, theater_occ):
                                 continue_flag = True
                                 break
                     if continue_flag is True:
+                        seat_index += 1
                         continue
                 # Seats are valid, return row and seat values
                 temp_seat_index = seat_index

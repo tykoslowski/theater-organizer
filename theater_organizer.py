@@ -41,9 +41,7 @@ def main():
     # unfulfilled if it is not possible
     for res in reservations:
         output_str = find_and_fill(res[1], theater)
-        if output_str == "":
-            output_file.write(res[0] + " " + "Empty string\n")
-        elif output_str is not None:
+        if output_str is not None:
             output_file.write(res[0] + " " + output_str + "\n")
         else:
             output_file.write(res[0] + " Unfulfilled\n")

@@ -8,9 +8,10 @@ Seating Challenge 2020 given to me by Walmart.
 I first made sure I had "make" and "zip" installed in my Linux distribution. I 
 am using Windows, so I'm running on WSL with Ubuntu.
 
-To create a command-line executable for this solution, run "make" inside the 
-directory in which it was unzipped. This should create a file called 
-"theater_organizer" which can be executed using:
+Linux commands "make" and "zip" must be installed. To create a command-line 
+executable for this solution, run "make" inside the directory in which it was 
+unzipped. This should create a file called "theater_organizer" which can be 
+executed using:
 
 ./theater_organizer [FILENAME]
 
@@ -64,6 +65,20 @@ The tests I ran on my solution were as follows:
   2 - What happens when all edges are filled? We should move to middle 
       portions and use greedy algorithm, checks that buffers overlap and that 
       buffers are being maintained
+  3 - Same as test 2, but has two invalid reservations at the end, so these 
+      two reservations should go unfulfilled
+  4 - Tests for squeeze, makes sure that the solution will overlap buffers on 
+      both left and right
+  5 - Tests for squeeze, makes sure that the solution will overlap buffers on 
+      both top and bottom
+  6 - Fills the theater fuller, tests that larger parties will end up being 
+      put at rows closer to the front, but smaller parties can still take 
+      advantage of open spaces further back
+  7 - Fills the theater to near-full capacity, keeps handling reservations, 
+      shows that reservations that don't fit will go unfulfilled, while 
+      reservations that can still fit will be fulfilled, and once the theater 
+      is at full-capacity, parties of 1 even will not have their reservation 
+      fulfilled
 
 I am extremely grateful to be considered as a Software Engineering Intern for 
 Walmart and I appreciate the time taken to interview me and to examine this 
