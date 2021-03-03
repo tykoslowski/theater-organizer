@@ -3,7 +3,7 @@ EMAIL: tykoslowski@g.ucla.edu
 DATE: 3/2/2021
 
 This is my implementation of the theater organizer for the Movie Theater 
-Seating Challenge 2020 given to me by Walmart.
+Seating Challenge 2020.
 
 I first made sure I had "make" and "zip" installed in my Linux distribution. I 
 am using Windows, so I'm running on WSL with Ubuntu.
@@ -81,7 +81,3 @@ The tests I ran on my solution were as follows:
       fulfilled
 
 These tests can be run using "make tests".
-
-I am extremely grateful to be considered as a Software Engineering Intern for 
-Walmart and I appreciate the time taken to interview me and to examine this 
-solution. Thank you and I hope to hear from you soon.
